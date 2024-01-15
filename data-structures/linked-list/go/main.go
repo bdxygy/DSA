@@ -82,6 +82,30 @@ func (l *LinkedList) Set(index int, value interface{}) bool {
 	return true
 }
 
+func (l *LinkedList) Insert(index int, value interface{}) bool {
+	if index < 0 || index > l.Length + 1 || l.Length == 0 {
+		return false
+	}
+
+	prevNode := l.Get(index-1)
+
+	if prevNode == nil {
+		return false
+	}
+
+	newNode := &Node{
+		Value: value,
+		Next: nil,
+	}
+
+	newNode.Next = prevNode.Next
+	prevNode.Next = newNode
+
+	l.Length++
+
+	return true
+}
+
 func (l *LinkedList) RemoveFirst() *Node {
 	if l.Length == 0 {
 		return nil
@@ -149,6 +173,8 @@ func (l *LinkedList) Remove(index int) *Node {
 	prevNode.Next = tempNode.Next
 	tempNode.Next = nil
 
+	l.Length--
+
 	return tempNode
 
 }
@@ -158,16 +184,20 @@ func (l *LinkedList) Reverse() bool {
 		return false
 	}
 
-	var prevNode *Node
+	var prevNode *Node = nil
 	tempNode := l.Head
 	nextNode := l.Head
 
-	for tempNode.Next != nil {
+	l.Head = l.Tail
+	l.Tail = tempNode;
+
+	for i := 0; i < l.Length; i++ {
 		nextNode = tempNode.Next
 		tempNode.Next = prevNode
 		prevNode = tempNode
 		tempNode = nextNode
 	}
+	
 
 	return true
 }
@@ -188,6 +218,33 @@ func (l *LinkedList) PrintList() []interface{} {
 func main() {
 
 	myLinkedList := NewLinkedList(1)
+	
+	// Append
+	myLinkedList.Append(2)
+	
+	// Prepend
+	myLinkedList.Prepend(3)
+	
+	// Set
+	myLinkedList.Set(1,7)
 
-	fmt.Println(myLinkedList);
+	// RemoveFirst
+	myLinkedList.Append(8)
+	myLinkedList.RemoveFirst()
+
+	// RemoveLast
+	myLinkedList.Prepend(10)
+	myLinkedList.RemoveLast()
+
+	// Remove
+	myLinkedList.Remove(1)
+
+	
+	// Reverse
+	myLinkedList.Append(11)
+	myLinkedList.Insert(1,22)
+	fmt.Println(myLinkedList.PrintList());
+	myLinkedList.Reverse()
+ 
+	fmt.Println(myLinkedList.PrintList());
 }
