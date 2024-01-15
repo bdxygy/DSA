@@ -1,0 +1,16 @@
+{
+  "name": "dsa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "ts": "ts-node"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
