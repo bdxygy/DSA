@@ -7,6 +7,10 @@ type Node struct {
 	Next  *Node
 }
 
+func NewNode(value interface{}) *Node {
+	return &Node{Value: value, Next: nil};
+}
+
 type LinkedList struct {
 	Head   *Node
 	Tail   *Node
@@ -21,9 +25,11 @@ func NewLinkedList(value interface{}) *LinkedList {
 		return newLinkedList
 	}
 
-	newNode := &Node{
-		Value: value, Next: nil,
-	}
+	// newNode := &Node{
+	// 	Value: value, Next: nil,
+	// }
+
+	newNode := NewNode(value)
 
 	newLinkedList.Head = newNode
 	newLinkedList.Tail = newNode
@@ -34,10 +40,12 @@ func NewLinkedList(value interface{}) *LinkedList {
 }
 
 func (l *LinkedList) Append(value interface{}) {
-	newNode := &Node{
-		Value: value,
-		Next: nil,
-	}
+	// newNode := &Node{
+	// 	Value: value,
+	// 	Next: nil,
+	// }
+
+	newNode := NewNode(value)
 
 	l.Tail.Next = newNode
 	l.Tail = newNode
@@ -46,10 +54,12 @@ func (l *LinkedList) Append(value interface{}) {
 }
 
 func (l *LinkedList) Prepend(value interface{}){
-	newNode := &Node{
-		Value: value,
-		Next: nil,
-	}
+	// newNode := &Node{
+	// 	Value: value,
+	// 	Next: nil,
+	// }
+
+	newNode := NewNode(value)
 
 	newNode.Next = l.Head
 	l.Head = newNode
@@ -93,10 +103,12 @@ func (l *LinkedList) Insert(index int, value interface{}) bool {
 		return false
 	}
 
-	newNode := &Node{
-		Value: value,
-		Next: nil,
-	}
+	// newNode := &Node{
+	// 	Value: value,
+	// 	Next: nil,
+	// }
+
+	newNode := NewNode(value)
 
 	newNode.Next = prevNode.Next
 	prevNode.Next = newNode
