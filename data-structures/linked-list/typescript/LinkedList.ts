@@ -26,7 +26,7 @@ export class LinkedList {
     this.length = 1;
   }
 
-  public print() {
+  public printList() {
     let nodeArray: any = [];
     if (this.length === 0) return nodeArray;
 
@@ -35,6 +35,8 @@ export class LinkedList {
       nodeArray.push(tempNode.value);
       tempNode = tempNode.next;
     }
+
+    console.log(nodeArray);
 
     return nodeArray;
   }
@@ -167,13 +169,6 @@ export class LinkedList {
 
     this.head = this.tail;
     this.tail = tempNode;
-
-    // for (let i = 0; i < this.length; i++) {
-    //   nextNode = tempNode!.next;
-    //   tempNode!.next = prevNode;
-    //   prevNode = tempNode;
-    //   tempNode = nextNode;
-    // }
 
     while (tempNode!.next) {
       nextNode = tempNode!.next;

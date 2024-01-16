@@ -32,9 +32,9 @@ myLinkedList.insert(2, 10);
 
 // remove
 myLinkedList.remove(1);
-console.log(myLinkedList.print());
+myLinkedList.printList();
 console.log(JSON.stringify(myLinkedList));
 
 myLinkedList.reverse();
-console.log(myLinkedList.print());
+myLinkedList.printList();
 console.log(JSON.stringify(myLinkedList));
